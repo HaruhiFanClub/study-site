@@ -15,6 +15,9 @@
       <div v-if="userName" class="user-info">
         <a-avatar class="avatar" :size="32" icon="user" :src="avatar" />
         <span class="user-name">{{ userName }}</span>
+        <div class="action-menu-list">
+          <div class="action-menu" @click="logout">退出登录</div>
+        </div>
       </div>
       <div v-else class="user-info" @click="navToLogin">
         <span class="user-name">请登录</span>
@@ -29,6 +32,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   name: 'MainView',
   data () {
@@ -43,8 +47,15 @@ export default {
     }
   },
   methods: {
+    ...mapActions([
+      'handleLogout'
+    ]),
     navToLogin () {
       this.$router.push({ name: 'login' })
+    },
+    async logout () {
+      await this.handleLogout()
+      location.reload()
     }
   }
 }
@@ -92,12 +103,40 @@ $page-width: 1440px;
       }
     }
     .user-info {
+      position: relative;
       display: flex;
       align-items: center;
       height: 100%;
       cursor: pointer;
       .avatar {
         margin-right: 10px;
+      }
+      .action-menu-list {
+        position: absolute;
+        top: 60px;
+        opacity: 0;
+        height: 0;
+        width: 150px;
+        overflow: hidden;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        transition: opacity 0.5s;
+        .action-menu {
+          height: 50px;
+          line-height: 50px;
+          padding-left: 10px;
+          border-bottom: 1px solid #eaeaea;
+          &:hover {
+            background-color: #f0f2f5;
+          }
+        }
+      }
+      &:hover {
+        .action-menu-list {
+          height: auto;
+          opacity: 1;
+        }
       }
     }
   }

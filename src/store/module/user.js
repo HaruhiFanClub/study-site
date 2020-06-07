@@ -61,19 +61,24 @@ export default {
       return new Promise((resolve, reject) => {
         try {
           getUserInfo(state.token).then(res => {
-            const data = res.data
             commit('setToken', res.token) // token
             commit('setUserName', res.nickName) // 名字
             commit('setUserId', res.userId) // id
             commit('setAvatorImgPath', res.avatorImgPath) // 头像
             commit('setHasGetInfo', true)
-            resolve(data)
+            resolve(res)
           }).catch(err => {
             reject(err)
           })
         } catch (error) {
           reject(error)
         }
+      })
+    },
+    handleLogout ({ state, commit }) {
+      return new Promise((resolve, reject) => {
+        commit('setToken', '')
+        resolve()
       })
     }
   }
