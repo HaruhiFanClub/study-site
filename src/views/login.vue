@@ -80,7 +80,7 @@ export default {
       try {
         await this.handleLogin(formValue)
         this.loading = false
-        this.$router.push({ name: 'home' })
+        this.$router.push({ name: this.$config.homeName })
       } catch (err) {
         this.loading = false
         console.log(`err: ${err}`)

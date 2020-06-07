@@ -12,9 +12,12 @@
         <router-link to="/">孵化论坛</router-link>
         <router-link to="/">我的</router-link>
       </nav>
-      <div class="user-info" @click="userInfoClick">
-        <a-avatar class="avatar" :size="32" icon="user" src="https://img.huabbao.com/case/20200606/5eda7fb09bc26.jpg!th_1000" />
-        <span class="user-name">用户名</span>
+      <div v-if="userName" class="user-info">
+        <a-avatar class="avatar" :size="32" icon="user" :src="avatar" />
+        <span class="user-name">{{ userName }}</span>
+      </div>
+      <div v-else class="user-info" @click="navToLogin">
+        <span class="user-name">请登录</span>
       </div>
     </a-layout-header>
     <a-layout-content class="main">
@@ -31,8 +34,16 @@ export default {
   data () {
     return {}
   },
+  computed: {
+    avatar () {
+      return this.$store.state.user.avatorImgPath
+    },
+    userName () {
+      return this.$store.state.user.userName
+    }
+  },
   methods: {
-    userInfoClick () {
+    navToLogin () {
       this.$router.push({ name: 'login' })
     }
   }

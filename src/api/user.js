@@ -8,9 +8,22 @@ export const login = ({ userName, password }) => {
   //   password
   // }
   // return axios.request({
-  //   url: 'login', // 这里填写请求的url地址
+  //   url: 'login',
   //   data: Qs.stringify(data),
   //   method: 'post'
+  // })
+  return new Promise((resolve, reject) => {
+    resolve(user)
+  })
+}
+
+export const getUserInfo = token => {
+  // return axios.request({
+  //   url: 'getUserInfo',
+  //   params: {
+  //     token
+  //   },
+  //   method: 'get'
   // })
   return new Promise((resolve, reject) => {
     resolve(user)

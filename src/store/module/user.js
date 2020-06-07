@@ -1,5 +1,6 @@
 import {
-  login
+  login,
+  getUserInfo
 } from '@/api/user'
 import { setToken, getToken } from '@/libs/util'
 
@@ -8,7 +9,8 @@ export default {
     userName: '',
     userId: '',
     avatorImgPath: '',
-    token: getToken()
+    token: getToken(),
+    hasGetInfo: false
   },
   mutations: {
     setToken (state, token) {
@@ -23,6 +25,9 @@ export default {
     },
     setAvatorImgPath (state, val) {
       state.avatorImgPath = val
+    },
+    setHasGetInfo (state, val) {
+      state.hasGetInfo = val
     }
   },
   actions: {
@@ -50,6 +55,25 @@ export default {
         }).catch(err => {
           reject(err)
         })
+      })
+    },
+    getUserInfo ({ state, commit }) {
+      return new Promise((resolve, reject) => {
+        try {
+          getUserInfo(state.token).then(res => {
+            const data = res.data
+            commit('setToken', res.token) // token
+            commit('setUserName', res.nickName) // 名字
+            commit('setUserId', res.userId) // id
+            commit('setAvatorImgPath', res.avatorImgPath) // 头像
+            commit('setHasGetInfo', true)
+            resolve(data)
+          }).catch(err => {
+            reject(err)
+          })
+        } catch (error) {
+          reject(error)
+        }
       })
     }
   }
