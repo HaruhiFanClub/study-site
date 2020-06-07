@@ -1,6 +1,17 @@
+import Cookies from 'js-cookie'
 import config from '@/config'
-const { title } = config
+const { title, cookieExpires } = config
 export const TOKEN_KEY = 'token'
+
+export const setToken = (token) => {
+  Cookies.set(TOKEN_KEY, token, { expires: cookieExpires || 30 })
+}
+
+export const getToken = () => {
+  const token = Cookies.get(TOKEN_KEY)
+  if (token) return token
+  else return false
+}
 
 export const getRouteTitleHandled = (route) => {
   const router = { ...route }

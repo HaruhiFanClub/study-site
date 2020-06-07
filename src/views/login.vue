@@ -4,18 +4,18 @@
     <div class="login-form">
       <div class="title">凉宫春日孵化计划</div>
       <div class="subtitle">共同孵化凉宫圈与应援团的未来</div>
-      <a-form layout="vertical" class="form">
+      <a-form :form="form" @submit="handleSubmit" layout="vertical" class="form">
         <a-form-item>
-          <a-input placeholder="邮箱/QQ" />
+          <a-input v-decorator="decorator.username" placeholder="邮箱/QQ" />
         </a-form-item>
         <a-form-item>
-          <a-input placeholder="密码" />
+          <a-input-password v-decorator="decorator.password" placeholder="密码" />
         </a-form-item>
         <a-form-item>
-          <a-checkbox>记住密码</a-checkbox>
+          <a-checkbox v-decorator="decorator.remember">记住密码</a-checkbox>
         </a-form-item>
         <a-form-item>
-          <a-button type="primary" block>登录</a-button>
+          <a-button :loading="loading" type="primary" html-type="submit" block>登录</a-button>
         </a-form-item>
         <div style="text-align: right;">
           <a href="#">注册账户</a>
@@ -26,8 +26,67 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
+const formDecorators = {
+  username: [
+    'username',
+    {
+      rules: [
+        { required: true, message: '请输入邮箱/QQ' }
+      ]
+    }
+  ],
+  password: [
+    'password',
+    {
+      rules: [
+        { required: true, message: '请输入密码' },
+        { min: 6, message: '密码长度为6-13位' },
+        { max: 13, message: '密码长度为6-13位' }
+      ]
+    }
+  ],
+  remember: [
+    'remember',
+    { valuePropName: 'checked', initialValue: true }
+  ]
+}
 export default {
-  name: 'login'
+  name: 'login',
+  data () {
+    return {
+      form: this.$form.createForm(this, { name: 'login-form' }),
+      decorator: formDecorators,
+      loading: false
+    }
+  },
+  methods: {
+    ...mapActions([
+      'handleLogin'
+    ]),
+    validateForm () {
+      let formValue = null
+      this.form.validateFields((err, val) => {
+        if (!err) formValue = val
+      })
+      return formValue
+    },
+    async handleSubmit (e) {
+      e.preventDefault()
+      const formValue = this.validateForm()
+      if (!formValue) return false
+      this.loading = true
+      try {
+        await this.handleLogin(formValue)
+        this.loading = false
+        this.$router.push({ name: 'home' })
+      } catch (err) {
+        this.loading = false
+        console.log(`err: ${err}`)
+      }
+    }
+  }
 }
 </script>
 
