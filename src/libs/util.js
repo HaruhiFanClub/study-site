@@ -1,5 +1,6 @@
 import config from '@/config'
 const { title } = config
+export const TOKEN_KEY = 'token'
 
 export const getRouteTitleHandled = (route) => {
   const router = { ...route }
