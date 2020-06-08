@@ -1,6 +1,7 @@
 import {
   login,
-  getUserInfo
+  getUserInfo,
+  regist
 } from '@/api/user'
 import { setToken, getToken } from '@/libs/util'
 
@@ -75,10 +76,26 @@ export default {
         }
       })
     },
-    handleLogout ({ state, commit }) {
+    handleLogout ({ commit }) {
       return new Promise((resolve, reject) => {
         commit('setToken', '')
+        commit('setHasGetInfo', false)
         resolve()
+      })
+    },
+    handleRegist ({ commit }, formValue) {
+      return new Promise((resolve, reject) => {
+        try {
+          regist(formValue).then(res => {
+            commit('setToken', '')
+            commit('setHasGetInfo', false)
+            resolve(res)
+          }).catch(err => {
+            reject(err)
+          })
+        } catch (error) {
+          reject(error)
+        }
       })
     }
   }

@@ -42,5 +42,13 @@ export default [
     meta: {
       title: '登录'
     }
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: () => import('@/views/register.vue'),
+    meta: {
+      title: '注册'
+    }
   }
 ]

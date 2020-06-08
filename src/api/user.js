@@ -30,6 +30,17 @@ export const getUserInfo = token => {
   })
 }
 
+export const regist = data => {
+  // return axios.request({
+  //   url: 'regist',
+  //   data: Qs.stringify(data),
+  //   method: 'post'
+  // })
+  return new Promise((resolve, reject) => {
+    resolve({ code: 200, msg: 'OK' })
+  })
+}
+
 export const examplePost = data => {
   return axios.request({
     url: 'example post url', // 这里填写请求的url地址

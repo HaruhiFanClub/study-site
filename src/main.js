@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 import config from '@/config'
 import VueParticles from 'vue-particles'
-import { Layout, Avatar, Button, Input, Checkbox, Form } from 'ant-design-vue'
+import { Layout, Avatar, Button, Input, Checkbox, Form, FormModel } from 'ant-design-vue'
 
 Vue.config.productionTip = false
 
@@ -15,6 +15,7 @@ Vue.use(Button)
 Vue.use(Input)
 Vue.use(Checkbox)
 Vue.use(Form)
+Vue.use(FormModel)
 
 /**
  * @description 全局注册应用配置

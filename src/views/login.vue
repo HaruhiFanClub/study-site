@@ -18,7 +18,7 @@
           <a-button :loading="loading" type="primary" html-type="submit" block>登录</a-button>
         </a-form-item>
         <div style="text-align: right;">
-          <a href="#">注册账户</a>
+          <router-link to="/register">注册账户</router-link>
         </div>
       </a-form>
     </div>
@@ -42,8 +42,8 @@ const formDecorators = {
     {
       rules: [
         { required: true, message: '请输入密码' },
-        { min: 6, message: '密码长度为6-13位' },
-        { max: 13, message: '密码长度为6-13位' }
+        { min: 6, message: '密码长度为6-16位' },
+        { max: 16, message: '密码长度为6-16位' }
       ]
     }
   ],
