@@ -5,6 +5,10 @@ const resolve = dir => {
 }
 
 module.exports = {
+  devServer: {
+    port: 8080,
+    proxy: 'http://www.haruhifanclub.com'
+  },
   // 每次保存时 lint 代码
   lintOnSave: true,
   chainWebpack: config => {

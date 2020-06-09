@@ -17,8 +17,8 @@ export default {
    * @description api请求基础路径
    */
   baseUrl: {
-    dev: '/',
-    pro: '' // TODO 实际的线上接口地址
+    dev: '/api',
+    pro: 'http://www.haruhifanclub.com/api' // TODO 实际的线上接口地址
   },
   /**
    * @description 默认打开的首页的路由name值，默认为home
