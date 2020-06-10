@@ -54,23 +54,28 @@ class HttpRequest {
     instance.interceptors.response.use(res => {
       this.destroy(url)
       const { data } = res
-      if (!(data instanceof Blob)) {
-        // 判断服务端状态码，处理逻辑
-      }
       return data
     }, error => {
       this.destroy(url)
       let errorInfo = error.response
-      if (!errorInfo) {
+      const errorInfoMsg = errorInfo.data.msg
+      if (errorInfoMsg) {
+        // 服务端返回的正常报错信息
+        Message.error(`${errorInfo.status}: ${errorInfoMsg}`)
+      } else if (errorInfo) {
+        // 服务端返回的异常报错信息
+        Message.error('服务器内部错误')
+        addErrorLog(errorInfo) // 存储异常信息
+      } else {
+        Message.error('服务器内部错误')
         const { request: { statusText, status }, config } = JSON.parse(JSON.stringify(error))
         errorInfo = {
           statusText,
           status,
           request: { responseURL: config.url }
         }
+        addErrorLog(errorInfo) // 存储异常信息
       }
-      addErrorLog(errorInfo)
-      Message.error('服务内部错误，请查看日志')
       return Promise.reject(error)
     })
   }
