@@ -13,7 +13,7 @@
         <router-link to="/">我的</router-link>
       </nav>
       <div v-if="userName" class="user-info">
-        <a-avatar class="avatar" :size="32" icon="user" :src="avatar" />
+        <a-avatar class="avatar" :size="32">{{ userName.substr(0, 1) }}</a-avatar>
         <span class="user-name">{{ userName }}</span>
         <div class="action-menu-list">
           <div class="action-menu" @click="logout">退出登录</div>
@@ -39,9 +39,6 @@ export default {
     return {}
   },
   computed: {
-    avatar () {
-      return this.$store.state.user.avatorImgPath
-    },
     userName () {
       return this.$store.state.user.userName
     }
