@@ -6,7 +6,7 @@
       <div class="subtitle">共同孵化凉宫圈与应援团的未来</div>
       <a-form :form="form" @submit="handleSubmit" layout="vertical" class="form">
         <a-form-item>
-          <a-input v-decorator="decorator.username" placeholder="邮箱/QQ" />
+          <a-input v-decorator="decorator.username" placeholder="用户名/邮箱/QQ" />
         </a-form-item>
         <a-form-item>
           <a-input-password v-decorator="decorator.password" placeholder="密码" />

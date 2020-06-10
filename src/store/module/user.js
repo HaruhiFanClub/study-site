@@ -1,6 +1,6 @@
+import Cookies from 'js-cookie'
 import {
   login,
-  getUserInfo,
   regist
 } from '@/api/user'
 import { setToken, getToken } from '@/libs/util'
@@ -48,10 +48,10 @@ export default {
           }
           // 登录成功，执行登录后操作
           commit('setToken', res.token) // token
-          commit('setUserName', res.nickName) // 名字
+          commit('setUserName', res.userName) // 名字
           commit('setUserId', res.userId) // id
           commit('setAvatorImgPath', res.avatorImgPath) // 头像
-          console.log(this.state)
+          Cookies.set('userInfo', res)
           resolve(res)
         }).catch(err => {
           reject(err)
@@ -61,16 +61,12 @@ export default {
     getUserInfo ({ state, commit }) {
       return new Promise((resolve, reject) => {
         try {
-          getUserInfo(state.token).then(res => {
-            commit('setToken', res.token) // token
-            commit('setUserName', res.nickName) // 名字
-            commit('setUserId', res.userId) // id
-            commit('setAvatorImgPath', res.avatorImgPath) // 头像
-            commit('setHasGetInfo', true)
-            resolve(res)
-          }).catch(err => {
-            reject(err)
-          })
+          const userInfo = JSON.parse(Cookies.get('userInfo'))
+          commit('setUserName', userInfo.userName) // 名字
+          commit('setUserId', userInfo.userId) // 名字
+          commit('setAvatorImgPath', userInfo.avatorImgPath) // 头像
+          commit('setHasGetInfo', true)
+          resolve(userInfo)
         } catch (error) {
           reject(error)
         }
@@ -87,8 +83,11 @@ export default {
       return new Promise((resolve, reject) => {
         try {
           regist(formValue).then(res => {
-            commit('setToken', '')
-            commit('setHasGetInfo', false)
+            commit('setToken', res.token) // token
+            commit('setUserName', res.userName) // 名字
+            commit('setUserId', res.userId) // id
+            commit('setAvatorImgPath', res.avatorImgPath) // 头像
+            Cookies.set('userInfo', res)
             resolve(res)
           }).catch(err => {
             reject(err)

@@ -8,6 +8,9 @@
         <a-form-item>
           <span style="font-size: 16px;">注册</span>
         </a-form-item>
+        <a-form-model-item prop="userName" has-feedback>
+          <a-input v-model="form.userName" :maxLength="10" placeholder="用户名" />
+        </a-form-model-item>
         <a-form-model-item prop="email" has-feedback>
           <a-input v-model="form.email" placeholder="邮箱" />
         </a-form-model-item>
@@ -57,14 +60,18 @@ export default {
     }
     return {
       form: {
+        userName: '',
         email: '',
         password: '',
         passwordAgain: '',
         qq: ''
       },
       formRules: {
+        userName: [
+          { required: true, message: '请输入用户名' }
+        ],
         email: [
-          { required: true, message: '请输入邮箱' },
+          { required: true, message: '请输入注册邮箱' },
           { type: 'email', message: '请输入正确的邮箱' }
         ],
         password: [
@@ -95,7 +102,7 @@ export default {
       try {
         await this.handleRegist(this.form)
         this.loading = false
-        this.$router.push({ name: 'login' })
+        this.$router.push({ name: this.$config.homeName })
       } catch (err) {
         this.loading = false
         console.log(`err: ${err}`)
