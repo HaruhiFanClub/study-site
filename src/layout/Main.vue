@@ -10,7 +10,7 @@
         <router-link to="/projects">项目</router-link>
         <router-link to="/">公共素材</router-link>
         <router-link to="/">孵化论坛</router-link>
-        <router-link to="/">我的</router-link>
+        <router-link to="/my/index">我的</router-link>
       </nav>
       <div v-if="userName" class="user-info">
         <a-avatar class="avatar" :size="32">{{ userName.substr(0, 1) }}</a-avatar>
@@ -25,6 +25,7 @@
     </a-layout-header>
     <a-layout-content class="main">
       <div class="page-content">
+        <slot name="sider"></slot>
         <router-view/>
       </div>
     </a-layout-content>
@@ -145,6 +146,7 @@ $page-width: 1440px;
     padding-top: 22px;
     background-color: #f0f2f5;
     .page-content {
+      display: flex;
       width: 1155px;
       margin: 0 auto;
       background-color: #fff;
