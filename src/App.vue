@@ -1,10 +1,13 @@
 <template>
-  <div id="app">
-    <router-view v-if="isRouterAlive" />
-  </div>
+  <a-config-provider :locale="locale">
+    <div id="app">
+      <router-view v-if="isRouterAlive" />
+    </div>
+  </a-config-provider>
 </template>
 
 <script>
+import zhCN from 'ant-design-vue/lib/locale-provider/zh_CN'
 export default {
   name: 'App',
   provide () {
@@ -14,7 +17,8 @@ export default {
   },
   data () {
     return {
-      isRouterAlive: true
+      isRouterAlive: true,
+      locale: zhCN
     }
   },
   methods: {
