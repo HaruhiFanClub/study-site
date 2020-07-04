@@ -46,6 +46,12 @@ export default {
 <style lang="scss" scoped>
 .side-menu {
   min-height: 850px;
+  padding-top: 5px;
+  .ant-menu-item {
+    &:first-child {
+      margin-top: 0;
+    }
+  }
   a {
     display: flex;
     align-items: center;

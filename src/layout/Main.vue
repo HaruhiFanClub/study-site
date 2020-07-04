@@ -26,7 +26,9 @@
     <a-layout-content class="main">
       <div class="page-content">
         <slot name="sider"></slot>
-        <router-view/>
+        <div class="page-main">
+          <router-view/>
+        </div>
       </div>
     </a-layout-content>
   </a-layout>
@@ -150,6 +152,9 @@ $page-width: 1440px;
       width: 1155px;
       margin: 0 auto;
       background-color: #fff;
+      .page-main {
+        flex: 1;
+      }
     }
   }
 }
