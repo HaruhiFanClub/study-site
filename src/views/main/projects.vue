@@ -69,18 +69,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-ul, ul li {
-  list-style: none;
-  padding: 0px;
-  margin: 0px;
-}
 .project-page {
   display: flex;
   padding: 24px 33px 100px 33px;
   box-sizing: border-box;
   .list-container {
     width: 760px;
+    padding-left: 17px;
     .pagination-container {
+      margin-top: 30px;
       text-align: center;
     }
   }
