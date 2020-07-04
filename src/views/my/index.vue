@@ -145,6 +145,8 @@ export default {
           .card-title {
             display: flex;
             align-items: center;
+            font-weight: 650;
+            color: rgba(0, 0, 0, 0.85);
           }
           .desc {
             $line-height: 20px;
@@ -157,7 +159,8 @@ export default {
             overflow: hidden;
             margin: 10px 0;
             font-size: 12px;
-            line-height: $line-height
+            line-height: $line-height;
+            color: rgba(0, 0, 0, 0.45);
           }
           .progress {}
         }
