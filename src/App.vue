@@ -36,8 +36,24 @@ export default {
 html,body{
   width: 100%;
   height: 100%;
+  overflow-y: overlay;
   margin: 0;
   padding: 0;
   font-size: 14px;
+}
+::-webkit-scrollbar {
+    width: 8px;
+    height: 16px;
+    background-color: #eee;
+}
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #eee;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #d4d2cf;
 }
 </style>
