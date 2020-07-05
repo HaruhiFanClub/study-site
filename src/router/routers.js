@@ -41,6 +41,14 @@ export default [
           title: '项目'
         },
         component: () => import('@/views/main/projects.vue')
+      },
+      {
+        path: '/source',
+        name: 'source',
+        meta: {
+          title: '公共素材'
+        },
+        component: () => import('@/views/main/source.vue')
       }
     ]
   },
