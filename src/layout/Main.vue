@@ -63,7 +63,7 @@ export default {
 
 <style lang="scss" scoped>
 $header-height: 64px;
-$page-width: 1440px;
+$page-width: 100%;
 .app-page {
   min-height: 100vh;
   margin: 0 auto;
