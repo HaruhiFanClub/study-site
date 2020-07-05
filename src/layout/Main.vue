@@ -8,7 +8,7 @@
         <router-link to="/">首页</router-link>
         <router-link to="/study">学习</router-link>
         <router-link to="/projects">项目</router-link>
-        <router-link to="/">公共素材</router-link>
+        <router-link to="/source">公共素材</router-link>
         <router-link to="/">孵化论坛</router-link>
         <router-link to="/my/index">我的</router-link>
       </nav>
