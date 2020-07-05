@@ -1,7 +1,27 @@
 <template>
   <div class="home-page">
     <div class="main-side">
-      <section>用户学习列表</section>
+      <section class="learning-list-container">
+        <div class="list">
+          <div class="item" v-for="item in learningList" :key="item.id">
+            <a-avatar shape="square" alt="用户头像" :size="40" :src="item.avatar" />
+            <div class="info">
+              <div class="user-name">{{ item.userName }}</div>
+              <div class="desc">
+                <span>正在进行 </span>
+                <router-link to="/">{{ item.studyTitle }}</router-link>
+                <span> 的学习</span>
+              </div>
+            </div>
+              <a-progress :percent="item.percent" size="small" style="width: 200px;" />
+          </div>
+        </div>
+        <div class="action">
+          <router-link to="/study">
+            <a-button size="large">了解详情</a-button>
+          </router-link>
+        </div>
+      </section>
       <section class="project-list-container">
         <project-list :data="projectList"></project-list>
         <div class="action">
@@ -13,7 +33,7 @@
           </router-link>
         </div>
       </section>
-      <section class="project-list-container">
+      <section class="source-list-container">
         <source-list :data="sourceList"></source-list>
         <div class="action">
           <router-link to="/source">
@@ -86,6 +106,36 @@
 import ProjectList from '_c/ProjectList'
 import SourceList from '_c/SourceList'
 const mockData = {
+  learningList: [
+    {
+      id: '1',
+      userName: '电脑社成员',
+      avatar: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593935723191&di=f95de4d1d1eddc7ac1061cdfdaee2cef&imgtype=0&src=http%3A%2F%2Fimg.duoziwang.com%2F2016%2F11%2F23%2F16432937557.jpg',
+      studyTitle: '学习方向-子方向-学习等级',
+      percent: 60
+    },
+    {
+      id: '2',
+      userName: '电脑社成员',
+      avatar: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593935723191&di=f95de4d1d1eddc7ac1061cdfdaee2cef&imgtype=0&src=http%3A%2F%2Fimg.duoziwang.com%2F2016%2F11%2F23%2F16432937557.jpg',
+      studyTitle: '学习方向-子方向-学习等级',
+      percent: 60
+    },
+    {
+      id: '3',
+      userName: '电脑社成员',
+      avatar: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593935723191&di=f95de4d1d1eddc7ac1061cdfdaee2cef&imgtype=0&src=http%3A%2F%2Fimg.duoziwang.com%2F2016%2F11%2F23%2F16432937557.jpg',
+      studyTitle: '学习方向-子方向-学习等级',
+      percent: 60
+    },
+    {
+      id: '4',
+      userName: '电脑社成员',
+      avatar: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593935723191&di=f95de4d1d1eddc7ac1061cdfdaee2cef&imgtype=0&src=http%3A%2F%2Fimg.duoziwang.com%2F2016%2F11%2F23%2F16432937557.jpg',
+      studyTitle: '学习方向-子方向-学习等级',
+      percent: 60
+    }
+  ],
   projectList: [
     {
       id: '1',
@@ -163,7 +213,8 @@ export default {
   data () {
     return {
       projectList: mockData.projectList,
-      sourceList: mockData.sourceList
+      sourceList: mockData.sourceList,
+      learningList: mockData.learningList
     }
   }
 }
@@ -172,20 +223,33 @@ export default {
 <style lang="scss" scoped>
 .home-page {
   display: flex;
-  padding: 20px 20px 20px 0;
+  padding: 0 20px 20px 0;
   .main-side {
     flex: 1;
     margin-right: 30px;
     section {
-      border-bottom: 1px solid #e9e9e9;
-    }
-    .project-list-container {
       padding: 20px;
+      border-bottom: 1px solid #e9e9e9;
       .action {
         display: flex;
         align-items: center;
         justify-content: flex-end;
         padding-top: 20px;
+      }
+    }
+    .learning-list-container {
+      padding: 0 0 20px 0;
+      .list {
+        .item {
+          display: flex;
+          align-items: center;
+          padding: 20px;
+          border-bottom: 1px solid #e9e9e9;
+          .info {
+            flex: 1;
+            margin-left: 20px;
+          }
+        }
       }
     }
   }
