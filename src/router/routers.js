@@ -12,7 +12,6 @@ import MyView from '@/layout/My'
 export default [
   {
     path: '/',
-    name: 'Home',
     component: MainView,
     meta: {
       title: '首页'
@@ -122,5 +121,14 @@ export default [
     meta: {
       title: '注册'
     }
+  },
+  {
+    name: 'notfound',
+    path: '/404',
+    component: () => import('@/views/error/404.vue')
+  },
+  {
+    path: '*',
+    redirect: '/404'
   }
 ]
