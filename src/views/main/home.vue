@@ -223,7 +223,7 @@ export default {
 <style lang="scss" scoped>
 .home-page {
   display: flex;
-  padding: 0 20px 20px 0;
+  padding: 30px 30px 20px 0;
   .main-side {
     flex: 1;
     margin-right: 30px;
