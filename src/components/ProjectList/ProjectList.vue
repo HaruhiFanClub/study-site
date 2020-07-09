@@ -92,7 +92,7 @@ ul, ul li {
       }
     }
     .desc {
-      width: 670px;
+      width: 100%;
       margin-bottom: 20px;
       font-size: 14px;
       line-height: 22px;
