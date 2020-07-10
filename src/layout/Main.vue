@@ -6,24 +6,12 @@
           <h1>孵化计划</h1>
         </div>
         <div class="nav">
-          <a-col :xs="3" :sm="3" :md="3" :lg="3" :xl="3">
-            <router-link to="/">首页</router-link>
-          </a-col>
-          <a-col :xs="3" :sm="3" :md="3" :lg="3" :xl="3">
-            <router-link to="/study">学习</router-link>
-          </a-col>
-          <a-col :xs="3" :sm="3" :md="3" :lg="3" :xl="3">
-            <router-link to="/projects">项目</router-link>
-          </a-col>
-          <a-col :xs="6" :sm="5" :md="4" :lg="4" :xl="4">
-            <router-link to="/source">公共素材</router-link>
-          </a-col>
-          <a-col :xs="6" :sm="5" :md="4" :lg="4" :xl="4">
-            <router-link to="/">孵化论坛</router-link>
-          </a-col>
-          <a-col :xs="3" :sm="4" :md="3" :lg="3" :xl="3">
-            <router-link to="/my/index">我的</router-link>
-          </a-col>
+          <router-link to="/">首页</router-link>
+          <router-link to="/study">学习</router-link>
+          <router-link to="/projects">项目</router-link>
+          <router-link to="/source">公共素材</router-link>
+          <router-link to="/">孵化论坛</router-link>
+          <router-link to="/my/index">我的</router-link>
         </div>
         <div v-if="userName" class="user-info">
           <a-avatar class="avatar" :size="32">{{ userName.substr(0, 1) }}</a-avatar>
@@ -99,12 +87,10 @@ $page-width: 100%;
       .logo {
         cursor: default;
         height: $header-height;
-        // width: 10%;
         display: block;
         h1 {
           display: inline-block;
           height: $header-height;
-          // width: 8rem;
           margin: 0;
           line-height: $header-height;
           font-size: 2rem;
@@ -115,16 +101,12 @@ $page-width: 100%;
       .nav {
         display: flex;
         height: 100%;
-        width: calc(100% - 11rem);
-        // margin-left: 8rem;
         align-items: center;
-        // transform: translateX(-100px);
-        .ant-col {
+        a {
+          display: inline-block;
           text-align: center;
-          a {
-            display: inline-block;
-            // padding: 0 2rem;
-          }
+          font-size: 1rem;
+          padding: 0 1rem;
         }
       }
       .user-info {
