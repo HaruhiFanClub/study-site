@@ -113,42 +113,32 @@ $page-width: 100%;
         display: inline-flex;
         height: $header-height;
         line-height: $header-height;
-        transform: translateX(-100px);
+        transform: translateX(-200px);
         a {
           display: inline-block;
           text-align: center;
           font-size: 1rem;
           padding: 0 2rem;
         }
-      }
-      @media (max-width: 1100px) {
-        .nav {
+        @media (max-width: 1100px) {
           transform: translateX(-100px);
           a {
             padding: 0 1.5rem;
           }
         }
-      }
-      @media (max-width: 991px) {
-        .nav {
+        @media (max-width: 991px) {
           transform: translateX(-100px);
         }
-      }
-      @media (max-width: 900px) {
-        .nav {
+        @media (max-width: 900px) {
           transform: translateX(-70px);
           a {
             padding: 0 1rem;
           }
         }
-      }
-      @media (max-width: 767px) {
-        .nav {
+        @media (max-width: 767px) {
           transform: translateX(0px);
         }
-      }
-      @media (max-width: 660px) {
-        .nav {
+        @media (max-width: 660px) {
           a {
             padding: 0 0.7rem;
           }
