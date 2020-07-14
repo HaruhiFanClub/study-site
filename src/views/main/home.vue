@@ -1,6 +1,6 @@
 <template>
   <a-row class="home-page">
-    <a-col :xs="24" :sm="24" :md="18" :lg="18" :xl="18" :xxl="18" class="main-side">
+    <a-col :xs="24" :sm="24" :md="18" :lg="18" :xl="18" :xxl="19" class="main-side">
       <section class="learning-list-container">
         <div class="list">
           <div class="item" v-for="item in learningList" :key="item.id">
@@ -42,7 +42,7 @@
         </div>
       </section>
     </a-col>
-    <a-col :xs="0" :sm="0" :md="6" :lg="6" :xl="6" :xxl="6" class="right-side">
+    <a-col :xs="0" :sm="0" :md="6" :lg="6" :xl="6" :xxl="5" class="right-side">
       <section class="about">
         <div class="desc">
           "我们希望用这个企划，

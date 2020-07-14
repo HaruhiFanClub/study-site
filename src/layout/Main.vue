@@ -2,8 +2,8 @@
   <a-layout class="app-page">
     <a-row>
       <a-layout-header>
-        <a-col :xs="0" :sm="1" :md="1" :lg="2" :xl="2" :xxl="2"></a-col>
-        <a-col :xs="24" :sm="22" :md="22" :lg="20" :xl="20" :xxl="20">
+        <a-col :xs="0" :sm="1" :md="1" :lg="2" :xl="3" :xxl="4"></a-col>
+        <a-col :xs="24" :sm="22" :md="22" :lg="20" :xl="18" :xxl="16">
           <div class="page-header">
             <div class="logo">
               <h1>孵化计划</h1>
@@ -28,17 +28,17 @@
             </div>
           </div>
         </a-col>
-        <a-col :xs="1" :sm="1" :md="1" :lg="2" :xl="2" :xxl="2"></a-col>
+        <a-col :xs="1" :sm="1" :md="1" :lg="2" :xl="3" :xxl="4"></a-col>
       </a-layout-header>
       <a-layout-content class="main">
-        <a-col :xs="0" :sm="0" :md="0" :lg="2" :xl="2" :xxl="2" class="temp"></a-col>
-        <a-col :xs="24" :sm="24" :md="24" :lg="20" :xl="20" :xxl="20" class="page-content">
+        <a-col :xs="0" :sm="0" :md="0" :lg="2" :xl="3" :xxl="4" class="temp"></a-col>
+        <a-col :xs="24" :sm="24" :md="24" :lg="20" :xl="18" :xxl="16" class="page-content">
           <slot name="sider"></slot>
           <div class="page-main">
             <router-view />
           </div>
         </a-col>
-        <a-col :xs="0" :sm="0" :md="0" :lg="2" :xl="2" :xxl="2" class="temp"></a-col>
+        <a-col :xs="0" :sm="0" :md="0" :lg="2" :xl="3" :xxl="4" class="temp"></a-col>
       </a-layout-content>
     </a-row>
   </a-layout>
@@ -120,35 +120,25 @@ $page-width: 100%;
           font-size: 1rem;
           padding: 0 2rem;
         }
-      }
-      @media (max-width: 1100px) {
-        .nav {
+        @media (max-width: 1100px) {
           transform: translateX(-100px);
           a {
             padding: 0 1.5rem;
           }
         }
-      }
-      @media (max-width: 991px) {
-        .nav {
+        @media (max-width: 991px) {
           transform: translateX(-100px);
         }
-      }
-      @media (max-width: 900px) {
-        .nav {
+        @media (max-width: 900px) {
           transform: translateX(-70px);
           a {
             padding: 0 1rem;
           }
         }
-      }
-      @media (max-width: 767px) {
-        .nav {
+        @media (max-width: 767px) {
           transform: translateX(0px);
         }
-      }
-      @media (max-width: 660px) {
-        .nav {
+        @media (max-width: 660px) {
           a {
             padding: 0 0.7rem;
           }
