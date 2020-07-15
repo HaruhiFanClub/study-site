@@ -1,19 +1,21 @@
 <template>
   <div class="project-page">
-    <div class="list-container">
-      <project-list :data="list"></project-list>
-      <div class="pagination-container">
-        <a-pagination
-          v-model="pageId"
-          :total="50"
-          show-less-items
-          show-size-changer
-          show-quick-jumper
-          @showSizeChange="onPageSizeChange"
-        />
+    <a-col :xs="24" :sm="24" :md="17" :lg="17" :xl="17" :xxl="17" class="main-side">
+      <div class="list-container">
+        <project-list :data="list"></project-list>
+        <div class="pagination-container">
+          <a-pagination
+            v-model="pageId"
+            :total="50"
+            show-less-items
+            show-size-changer
+            show-quick-jumper
+            @showSizeChange="onPageSizeChange"
+          />
+        </div>
       </div>
-    </div>
-    <div class="right-side">
+    </a-col>
+    <a-col :xs="0" :sm="0" :md="7" :lg="7" :xl="7" :xxl="7" class="right-side">
       <div class="initiation">
         <div class="desc">
           用创造改变圈子，用合作超越自我<br>
@@ -22,7 +24,7 @@
         </div>
         <a-button class="initiation-btn">我想立项</a-button>
       </div>
-    </div>
+    </a-col>
   </div>
 </template>
 
@@ -71,18 +73,20 @@ export default {
 <style lang="scss" scoped>
 .project-page {
   display: flex;
-  padding: 24px 33px 100px 33px;
+  padding: 32px 32px 100px 32px;
   box-sizing: border-box;
-  .list-container {
-    width: 760px;
-    padding-left: 17px;
-    .pagination-container {
-      margin-top: 30px;
-      text-align: center;
+  .main-side{
+    flex: 1;
+    margin-right: 30px;
+    .list-container {
+      padding: 0 20px;
+      .pagination-container {
+        margin-top: 30px;
+        text-align: center;
+      }
     }
   }
   .right-side {
-    flex: 1;
     .initiation {
       width: 100%;
       padding: 15px 15px 10px 15px;
