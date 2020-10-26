@@ -32,5 +32,64 @@ export default {
       showInHeader: true, // 设为false后不会在顶部显示错误日志徽标
       developmentOff: true // 设为true后在开发环境不会收集错误信息，方便开发中排查错误
     }
-  }
+  },
+  /**
+   *
+   */
+  learningMeta: [
+    {
+      path: '',
+      name: 'word',
+      meta: {
+        title: '文字创作方向',
+        icon: 'mail'
+      },
+      id: 0,
+      component: { render: h => h('router-view') },
+      children: [
+        {
+          path: 'zatan',
+          name: 'zatan',
+          meta: {
+            title: '杂谈创作',
+            id: 0
+          },
+          id: 0,
+          component: () => import('@/views/learning/zatan.vue')
+        },
+        {
+          path: 'juben',
+          name: 'juben',
+          meta: {
+            title: '脚本创作',
+            id: 1
+          },
+          id: 1,
+          component: () => import('@/views/learning/juben.vue')
+        }
+      ]
+    },
+    {
+      path: '',
+      name: 'android',
+      meta: {
+        title: 'android',
+        icon: 'mail'
+      },
+      id: 1,
+      component: { render: h => h('router-view') },
+      children: [
+        {
+          path: 'android',
+          name: 'android',
+          meta: {
+            title: 'Android',
+            id: 2
+          },
+          id: 2,
+          component: () => import('@/views/learning/android.vue')
+        }
+      ]
+    }
+  ]
 }

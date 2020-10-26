@@ -1,0 +1,106 @@
+@mixin line-base {
+  font-family: "Microsoft YaHei";
+  margin-left: 32px;
+  margin-bottom: 0;
+  max-width: 640px;
+}
+p {
+  @include line-base;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #000000a5;
+}
+ol {
+  @include line-base;
+  align-self: flex-start;
+  padding: 0px 0px 0px 24px;
+  box-sizing: border-box;
+}
+ul {
+  @include line-base;
+  align-self: flex-start;
+  padding: 0px 0px 0px 24px;
+  box-sizing: border-box;
+}
+.ql-syntax {
+  @include line-base;
+  padding: 16px;
+  background-color: #ffffff00;
+  box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(235, 235, 235, 1);
+  border-radius: 4px;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 18px;
+  color: #000000a5;
+}
+.ql-indent-1:not(.ql-direction-rtl) {
+  padding-left: 2em;
+}
+.ql-indent-2:not(.ql-direction-rtl) {
+  padding-left: 4em;
+}
+.ql-indent-3:not(.ql-direction-rtl) {
+  padding-left: 6em;
+}
+.ql-indent-4:not(.ql-direction-rtl) {
+  padding-left: 8em;
+}
+.ql-indent-5:not(.ql-direction-rtl) {
+  padding-left: 10em;
+}
+.ql-indent-6:not(.ql-direction-rtl) {
+  padding-left: 12em;
+}
+.ql-indent-7:not(.ql-direction-rtl) {
+  padding-left: 14em;
+}
+.ql-indent-8:not(.ql-direction-rtl) {
+  padding-left: 16em;
+}
+blockquote {
+  @include line-base;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  border-left: 3px solid #cccccc;
+  padding-left: 24px;
+  color: #00000072;
+}
+h1 {
+  @include line-base;
+  margin-top: 32px;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 40px;
+  color: #000000bf;
+}
+h2 {
+  @include line-base;
+  margin-top: 18px;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+  color: #000000bf;
+}
+img {
+  max-width: 640px;
+}
+.ql-video {
+  @include line-base;
+  width: 640px;
+  height: 364px;
+}
+.ql-align-center {
+  text-align: center;
+}
+.ql-align-right {
+  text-align: right;
+}
+.ql-align-justify {
+  text-align: justify;
+}

@@ -21,6 +21,31 @@ export const regist = data => {
   })
 }
 
+export const getNameByQQ = (QQ) => {
+  return axios.request({
+    url: 'https://r.qzone.qq.com/fcg-bin/cgi_get_portrait.fcg?g_tk=1518561325&uins=' + QQ,
+    method: 'get'
+  })
+}
+
+export const getAvatarByQQ = (QQ) => {
+  return axios.request({
+    url: 'http://q1.qlogo.cn/g?b=qq&s=100&t=1547904810&nk=' + QQ,
+    method: 'get'
+  })
+}
+
+export const getUsersByPage = ({ page, size }) => {
+  return axios.request({
+    url: '/study-site/get-users-by-page',
+    params: {
+      page,
+      size
+    },
+    method: 'get'
+  })
+}
+
 export const examplePost = data => {
   return axios.request({
     url: 'example post url', // 这里填写请求的url地址

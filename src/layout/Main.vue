@@ -19,7 +19,7 @@
             <div v-if="userName" class="user-info">
               <a-avatar class="avatar" :size="32">{{ userName.substr(0, 1) }}</a-avatar>
               <span class="user-name">{{ userName }}</span>
-              <div class="action-menu-list">
+              <div class="action-menu-list" style="z-index: 1;">
                 <div class="action-menu" @click="logout">退出登录</div>
               </div>
             </div>

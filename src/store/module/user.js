@@ -74,8 +74,10 @@ export default {
     },
     handleLogout ({ commit }) {
       return new Promise((resolve, reject) => {
-        commit('setToken', '')
+        // commit('setToken', '')
         commit('setHasGetInfo', false)
+        Cookies.remove('token')
+        Cookies.remove('userInfo')
         resolve()
       })
     },

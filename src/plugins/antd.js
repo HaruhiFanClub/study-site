@@ -13,7 +13,18 @@ import {
   Icon,
   Row,
   Col,
-  Progress
+  Progress,
+  Breadcrumb,
+  Anchor,
+  Divider,
+  Upload,
+  TreeSelect,
+  Radio,
+  Tag,
+  Tooltip,
+  Select,
+  Collapse,
+  Tree
 } from 'ant-design-vue'
 
 Vue.use(ConfigProvider)
@@ -30,3 +41,14 @@ Vue.use(Menu)
 Vue.use(Row)
 Vue.use(Col)
 Vue.use(Progress)
+Vue.use(Breadcrumb)
+Vue.use(Anchor)
+Vue.use(Divider)
+Vue.use(Upload)
+Vue.use(TreeSelect)
+Vue.use(Radio)
+Vue.use(Tag)
+Vue.use(Tooltip)
+Vue.use(Select)
+Vue.use(Collapse)
+Vue.use(Tree)

@@ -30,7 +30,7 @@ export default {
     }
   },
   created () {
-    const routes = this.$router.options.routes.find(item => item.name === 'My').children
+    const routes = this.$router.options.routes.find(item => item.name === 'my').children
     this.menuList = routes.map(item => {
       return {
         title: item.meta.title,

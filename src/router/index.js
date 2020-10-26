@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import { setTitle, getToken, setToken } from '@/libs/util'
+import { setTitle, setId, getToken, setToken } from '@/libs/util'
 import routes from './routers'
 import store from '@/store'
 import config from '@/config'
@@ -16,15 +16,23 @@ const router = new VueRouter({
   routes
 })
 
+// console.log(store.state.user.hasGetInfo)
+
 router.beforeEach((to, from, next) => {
   const token = getToken()
   if (token && to.name === LOGIN_PAGE_NAME) {
-    // 已登录且要跳转的页面是登录页
     next({ name: homeName }) // 跳转到homeName页
   } else if (!token) {
     // 未登录
+    console.log(to.path)
+    console.log(to.name)
+    if (/^my.*/.test(to.name) || /^\/learning\/mine.*/.test(to.path)) {
+      next({ name: LOGIN_PAGE_NAME })
+    }
     next()
   } else {
+    console.log(to.path)
+    console.log(to.name)
     if (store.state.user.hasGetInfo) {
       next() // 已获取用户信息，直接跳转
     } else {
@@ -40,6 +48,7 @@ router.beforeEach((to, from, next) => {
 
 router.afterEach(to => {
   setTitle(to, router.app)
+  setId(to)
   window.scrollTo(0, 0)
 })
 

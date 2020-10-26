@@ -9,7 +9,7 @@
               <div class="user-name">{{ item.userName }}</div>
               <div class="desc">
                 <span>正在进行</span>
-                <router-link to="/">{{ item.studyTitle }}</router-link>
+                <router-link to="/learning/tittle-tattle">{{ item.studyTitle }}</router-link>
                 <span>的学习</span>
               </div>
             </div>

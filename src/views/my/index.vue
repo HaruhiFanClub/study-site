@@ -32,6 +32,7 @@
 
 <script>
 import LearningList from '_c/LearningList'
+// import { getLearningInfo } from '@/libs/util'
 const mockData = {
   main: [
     { title: '积分', num: 210, monthNum: 112 },
@@ -64,6 +65,9 @@ export default {
       mainList: mockData.main,
       otherList: mockData.other
     }
+  },
+  created () {
+    // console.log(getLearningInfo())
   }
 }
 </script>

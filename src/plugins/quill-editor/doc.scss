@@ -1,0 +1,142 @@
+/*!
+ * Quill Editor v1.3.7
+ * https://quilljs.com/
+ * Copyright (c) 2014, Jason Chen
+ * Copyright (c) 2013, salesforce.com
+ */
+ .ql-container {
+  box-sizing: border-box;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  height: 100%;
+  margin: 0px;
+  position: relative;
+}
+.ql-container.ql-disabled .ql-tooltip {
+  visibility: hidden;
+}
+.ql-container.ql-disabled .ql-editor ul[data-checked] > li::before {
+  pointer-events: none;
+}
+.ql-clipboard {
+  left: -100000px;
+  height: 1px;
+  overflow-y: hidden;
+  position: absolute;
+  top: 50%;
+}
+.ql-clipboard p {
+  margin: 0;
+  padding: 0;
+}
+.ql-editor {
+  box-sizing: border-box;
+  line-height: 1.42;
+  height: 100%;
+  outline: none;
+  overflow-y: auto;
+  padding: 12px 15px;
+  tab-size: 4;
+  -moz-tab-size: 4;
+  text-align: left;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.ql-editor > * {
+  cursor: text;
+}
+
+@mixin line-base {
+  font-family: "Microsoft YaHei";
+  margin: 0;
+  max-width: 640px;
+}
+
+.ql-snow .ql-editor p {
+  @include line-base;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #000000a5;
+}
+.ql-snow .ql-editor ol {
+  align-self: flex-start;
+  padding: 0px 0px 0px 24px;
+  box-sizing: border-box;
+}
+.ql-snow .ql-editor ul {
+  align-self: flex-start;
+  padding: 0px 0px 0px 24px;
+  box-sizing: border-box;
+}
+.ql-snow .ql-editor pre.ql-syntax {
+  @include line-base;
+  padding: 16px;
+  background-color: #ffffff00;
+  box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(235, 235, 235, 1);
+  border-radius: 4px;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 18px;
+  color: #000000a5;
+}
+.ql-snow .ql-editor blockquote {
+  @include line-base;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  border-left: 3px solid #cccccc;
+  padding-left: 24px;
+  color: #00000072;
+}
+.ql-snow .ql-editor h1 {
+  @include line-base;
+  margin-top: 32px;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 40px;
+  color: #000000bf;
+}
+.ql-snow .ql-editor h2 {
+  @include line-base;
+  margin-top: 18px;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+  color: #000000bf;
+}
+.ql-snow .ql-editor img {
+  max-width: 640px;
+}
+.ql-snow .ql-editor .ql-video {
+  width: 100%;
+  height: 364px;
+}
+.ql-editor .ql-indent-1:not(.ql-direction-rtl) {
+  padding-left: 2em;
+}
+.ql-editor .ql-indent-2:not(.ql-direction-rtl) {
+  padding-left: 4em;
+}
+.ql-editor .ql-indent-3:not(.ql-direction-rtl) {
+  padding-left: 6em;
+}
+.ql-editor .ql-indent-4:not(.ql-direction-rtl) {
+  padding-left: 8em;
+}
+.ql-editor .ql-indent-5:not(.ql-direction-rtl) {
+  padding-left: 10em;
+}
+.ql-editor .ql-indent-6:not(.ql-direction-rtl) {
+  padding-left: 12em;
+}
+.ql-editor .ql-indent-7:not(.ql-direction-rtl) {
+  padding-left: 14em;
+}
+.ql-editor .ql-indent-8:not(.ql-direction-rtl) {
+  padding-left: 16em;
+}

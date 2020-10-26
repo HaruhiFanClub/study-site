@@ -13,6 +13,16 @@ export const getToken = () => {
   else return false
 }
 
+export const setLearningInfo = (data) => {
+  Cookies.set('userLearningInfo', data, { expires: cookieExpires || 30 })
+}
+
+export const getLearningInfo = () => {
+  const data = Cookies.get('userLearningInfo')
+  if (data) return data
+  else return false
+}
+
 export const getRouteTitleHandled = (route) => {
   const router = { ...route }
   const meta = { ...route.meta }
@@ -40,4 +50,17 @@ export const setTitle = (routeItem, vm) => {
   const pageTitle = showTitle(handledRoute, vm)
   const resTitle = pageTitle ? `${title} - ${pageTitle}` : title
   window.document.title = resTitle
+}
+
+export const setId = (route) => {
+  const router = { ...route }
+  let id = ''
+  if (router.id) {
+    if (typeof router.id === 'function') {
+      router.id.__titleIsFunction__ = true
+      id = router.id(router)
+    } else id = router.id
+  }
+  router.id = id
+  return router
 }
