@@ -23,6 +23,7 @@
     </a-form-model-item>
     <a-form-model-item :wrapperCol="{span: 10, offset: 4}">
       <a-upload
+        ref="up"
         name="file"
         :multiple="true"
         action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
@@ -132,13 +133,17 @@ export default {
   methods: {
     submit () {
       console.log(this.tags)
+      console.log(this.$refs.up.sFileList[0])
       publishMaterial({
+        token: this.$store.state.user.token,
         title: this.handleText(this.form.title),
         content: this.handleText(this.form.content),
         intro: this.handleText(this.form.intro),
         QQ: this.form.QQ,
         tags: this.tags,
-        license: this.form.license
+        license: this.form.license,
+        file: 'http://xxxxxx.xx.com',
+        url: 'http://xxxxxx.xx.com'
       })
     },
     showTagInput () {

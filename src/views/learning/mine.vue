@@ -30,7 +30,7 @@
 </template>
 <script>
 import Learning from '@/layout/Learning'
-import { getSubjectsByUser } from '@/api/user'
+import { getSubjectsByUser } from '@/api/study'
 import { setLearningInfo } from '@/libs/util'
 import config from '@/config'
 export default {

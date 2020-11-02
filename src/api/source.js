@@ -16,18 +16,21 @@ export const getSourcetList = data => {
   })
 }
 
-export const publishMaterial = (materialInfo) => {
+export const publishMaterial = (material) => {
   return axios.request({
     url: '/study-site/publish-material',
     params: {
-      title: materialInfo.title,
-      content: materialInfo.content,
-      QQ: materialInfo.QQ,
-      intro: materialInfo.intro,
-      tags: materialInfo.tags,
-      license: materialInfo.license
+      token: material.token,
+      title: material.title,
+      content: material.content,
+      qq: material.QQ,
+      intro: material.intro,
+      tags: material.tags,
+      license: material.license,
+      file: material.file,
+      url: material.url
     },
-    method: 'get'
+    method: 'post'
   })
 }
 

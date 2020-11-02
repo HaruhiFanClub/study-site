@@ -23,7 +23,7 @@
 
 <script>
 import LearningList from '_c/LearningList'
-import { getSubjectsByUser, getMissionInfoByUser } from '@/api/study'
+import { getSubjectsByUser, getMissionInfoByUserAndSubject } from '@/api/study'
 import config from '@/config'
 const learningMeta = config.learningMeta
 const mockData = []
@@ -50,7 +50,7 @@ export default {
         let done = 0
         let mission = null
         let missionSize = 0
-        await getMissionInfoByUser(this.$store.state.user.userId, subjectItem.subject_id).then((res) => {
+        await getMissionInfoByUserAndSubject(this.$store.state.user.userId, subjectItem.subject_id).then((res) => {
           console.log(res)
           res.userScoreInfo.forEach(missionItem => {
             missionSize++
