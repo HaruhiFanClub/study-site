@@ -33,6 +33,8 @@
 <script>
 import LearningList from '_c/LearningList'
 // import { getLearningInfo } from '@/libs/util'
+import { getUserInfo } from '@/api/user'
+
 const mockData = {
   main: [
     { title: '积分', num: 210, monthNum: 112 },
@@ -68,6 +70,15 @@ export default {
   },
   created () {
     // console.log(getLearningInfo())
+  },
+  mounted () {
+    this.initPage()
+  },
+  methods: {
+    async initPage () {
+      const res = await getUserInfo()
+      console.log(res) // TODO: 暂时还没法用
+    }
   }
 }
 </script>

@@ -46,6 +46,20 @@ export const getUsersByPage = ({ page, size }) => {
   })
 }
 
+export const getTop3ScoreUsers = () => axios.request({
+  url: '/study-site/get-top3-score-users',
+  method: 'get'
+})
+
+// /study-site/get-user-info-by-id
+export const getUserInfo = () => axios.request({
+  url: '/study-site/get-user-info-by-id',
+  params: {
+    user_id: '123'
+  },
+  method: 'get'
+})
+
 export const examplePost = data => {
   return axios.request({
     url: 'example post url', // 这里填写请求的url地址

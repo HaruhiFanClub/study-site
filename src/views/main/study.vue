@@ -6,7 +6,7 @@
             <a-collapse :bordered="false" expandIconPosition="right">
               <a-collapse-panel v-for="userItem in userList" :key="userItem.id" :style="customStyle">
                 <div slot="header" style="display:flex;padding: 8px 0 8px 4px;">
-                  <a-avatar shape="square" alt="用户头像" :size="40" :src="null" icon="user" />
+                  <a-avatar shape="square" alt="用户头像" :size="40">{{ userItem.userName.substring(0, 1) }}</a-avatar>
                   <div style="margin-left: 20px;height: 40px;">
                     <div style="line-height: 20px;">{{userItem.userName}}</div>
                     <div style="line-height: 20px;">
@@ -77,8 +77,8 @@
 
 <script>
 import config from '@/config'
-import { getMissionInfoByUserAndSubject } from '@/api/study'
-import { getAvatarByQQ, getUsersByPage } from '@/api/user'
+import { getMissionInfoByUserAndSubject, getAllDirections } from '@/api/study'
+import { getAvatarByQQ, getUsersByPage, getTop3ScoreUsers } from '@/api/user'
 export default {
   name: 'home',
   computed: {
@@ -91,86 +91,12 @@ export default {
       learningMeta: config.learningMeta,
       text: 'A dog is a type of domesticated animal.Known for its loyalty and faithfulness,it can be found as a welcome guest in many households across the world.',
       customStyle: 'background: white;overflow: hidden;align-items: center;padding: 0px;border-bottom: 1px solid #e9e9e9;',
-      userList: [
-        {
-          id: '1',
-          userName: '电脑社成员',
-          points: 999,
-          avatar:
-            'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593935723191&di=f95de4d1d1eddc7ac1061cdfdaee2cef&imgtype=0&src=http%3A%2F%2Fimg.duoziwang.com%2F2016%2F11%2F23%2F16432937557.jpg',
-          // studyTitle: '学习方向-子方向-学习等级',
-          learningList: [
-            {
-              subject_id: 0,
-              title: '学习方向-子方向',
-              percent: 60
-            },
-            {
-              subject_id: 1,
-              title: '学习方向-子方向',
-              percent: 60
-            },
-            {
-              subject_id: 2,
-              title: '学习方向-子方向',
-              percent: 60
-            }
-          ]
-        },
-        {
-          id: '2',
-          userName: '电脑社成员',
-          points: 999,
-          avatar:
-            'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593935723191&di=f95de4d1d1eddc7ac1061cdfdaee2cef&imgtype=0&src=http%3A%2F%2Fimg.duoziwang.com%2F2016%2F11%2F23%2F16432937557.jpg',
-          // studyTitle: '学习方向-子方向-学习等级',
-          learningList: [
-            {
-              subject_id: 0,
-              title: '学习方向-子方向',
-              percent: 60
-            },
-            {
-              subject_id: 1,
-              title: '学习方向-子方向',
-              percent: 60
-            },
-            {
-              subject_id: 2,
-              title: '学习方向-子方向',
-              percent: 60
-            }
-          ]
-        },
-        {
-          id: '3',
-          userName: '电脑社成员',
-          points: 999,
-          avatar:
-            'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593935723191&di=f95de4d1d1eddc7ac1061cdfdaee2cef&imgtype=0&src=http%3A%2F%2Fimg.duoziwang.com%2F2016%2F11%2F23%2F16432937557.jpg',
-          // studyTitle: '学习方向-子方向-学习等级',
-          learningList: [
-            {
-              subject_id: 0,
-              title: '学习方向-子方向',
-              percent: 60
-            },
-            {
-              subject_id: 1,
-              title: '学习方向-子方向',
-              percent: 60
-            },
-            {
-              subject_id: 2,
-              title: '学习方向-子方向',
-              percent: 60
-            }
-          ]
-        }
-      ]
+      userList: []
     }
   },
   mounted () {
+    this.initUserList()
+    this.initLearningList()
     getUsersByPage({
       page: 1,
       size: 3
@@ -192,7 +118,44 @@ export default {
     // })
   },
   methods: {
-    getAvatarByQQ: getAvatarByQQ
+    getAvatarByQQ: getAvatarByQQ,
+    async initUserList () {
+      const res = await getTop3ScoreUsers()
+      this.userList = res.map((item, index) => {
+        // TODO: 需要后端给数据
+        const mockData = {
+          id: index + 1 + '',
+          userName: item.name,
+          points: item.score,
+          avatar: '',
+          learningList: [
+            {
+              subject_id: 0,
+              title: '学习方向-子方向',
+              percent: 60
+            },
+            {
+              subject_id: 1,
+              title: '学习方向-子方向',
+              percent: 60
+            },
+            {
+              subject_id: 2,
+              title: '学习方向-子方向',
+              percent: 60
+            }
+          ]
+        }
+        return {
+          ...item,
+          ...mockData
+        }
+      })
+    },
+    async initLearningList () {
+      const res = await getAllDirections()
+      console.log(res) // TODO:
+    }
   }
 }
 </script>
